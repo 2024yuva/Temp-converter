@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: white;
+}
+
+.container {
+  text-align: center;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 40px;
+  width: 90%;
+  max-width: 400px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+  animation: fadeIn 1s ease-out;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #00e5ff;
+}
+
+p {
+  margin-bottom: 20px;
+  color: #e0ffff;
+}
+
+input {
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  width: 80%;
+  font-size: 16px;
+  outline: none;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px #00e5ff55;
+  background: #ffffff11;
+  color: #fff;
+  transition: 0.3s ease;
+}
+
+input:focus {
+  box-shadow: 0 0 20px #00e5ff99;
+}
+
+button {
+  padding: 10px 20px;
+  background: #00e5ff;
+  border: none;
+  border-radius: 10px;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-bottom: 20px;
+}
+
+button:hover {
+  background: #00bcd4;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #00e5ff;
+}
+
+#feedback {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+  transition: 0.3s ease;
+}
+
+#reward {
+  margin-top: 10px;
+  font-size: 20px;
+  color: #00ffcc;
+  animation: rewardPulse 1s infinite alternate;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes rewardPulse {
+  0% { opacity: 0.8; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.05); }
+}

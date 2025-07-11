@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Temperature Converter - Project Report Theme</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #f9f9f9;
+      margin: 40px auto;
+      padding: 20px;
+      max-width: 700px;
+      border: 1px solid #ccc;
+      background: #fff;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #004080;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 20px;
+      color: #333;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 20px;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #004080;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #0066cc;
+    }
+
+    .result-box {
+      margin-top: 30px;
+      padding: 15px;
+      border: 1px dashed #004080;
+      background-color: #f0f8ff;
+      border-radius: 8px;
+      font-size: 16px;
+      color: #000;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Temperature Converter</h1>
+  <h2>Web-based Interactive Tool</h2>
+
+  <p>This application allows you to convert temperature values between Celsius (°C), Fahrenheit (°F), and Kelvin (K). Just enter the value, choose the unit, and click "Convert" to get the results in the other two units instantly.</p>
+
+  <label for="tempInput">Enter Temperature:</label>
+  <input type="number" id="tempInput" placeholder="e.g., 37.5">
+
+  <label for="unitSelect">Select Unit:</label>
+  <select id="unitSelect">
+    <option value="C">Celsius (°C)</option>
+    <option value="F">Fahrenheit (°F)</option>
+    <option value="K">Kelvin (K)</option>
+  </select>
+
+  <button onclick="convertTemperature()">Convert</button>
+
+  <div class="result-box" id="result"></div>
+
+  <footer>
+    Developed as part of Web Development Project • Temperature Converter • 2025
+  </footer>
+
+  <script>
+    function convertTemperature() {
+      const temp = parseFloat(document.getElementById('tempInput').value);
+      const unit = document.getElementById('unitSelect').value;
+      const resultDiv = document.getElementById('result');
+
+      if (isNaN(temp)) {
+        resultDiv.innerHTML = "❌ Please enter a valid number.";
+        return;
+      }
+
+      let celsius, fahrenheit, kelvin;
+
+      switch (unit) {
+        case 'C':
+          celsius = temp;
+          fahrenheit = (temp * 9 / 5) + 32;
+          kelvin = temp + 273.15;
+          break;
+        case 'F':
+          celsius = (temp - 32) * 5 / 9;
+          fahrenheit = temp;
+          kelvin = celsius + 273.15;
+          break;
+        case 'K':
+          kelvin = temp;
+          celsius = temp - 273.15;
+          fahrenheit = (celsius * 9 / 5) + 32;
+          break;
+      }
+
+      resultDiv.innerHTML = `
+        <strong>Converted Results:</strong><br><br>
+        Celsius: <strong>${celsius.toFixed(2)}°C</strong><br>
+        Fahrenheit: <strong>${fahrenheit.toFixed(2)}°F</strong><br>
+        Kelvin: <strong>${kelvin.toFixed(2)}K</strong>
+      `;
+    }
+  </script>
+
+</body>
+</html>
